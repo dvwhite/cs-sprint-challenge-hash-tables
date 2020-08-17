@@ -1,13 +1,22 @@
 # Your code here
 
 
-
 def finder(files, queries):
     """
-    YOUR CODE HERE
+    Return a list of files that match the queries
     """
-    # Your code here
+    # Create a list of file names mapped to all paths that lead to them
+    paths = {}
+    for file in files:
+        fname = file.split('/')[-1]
+        paths[fname] = paths.get(fname, [])
+        paths[fname].append(file)
 
+    # Iterate over all queries, and add the file paths pointing to each query
+    # to result and return it
+    result = []
+    for query in queries:
+        result += paths.get(query, [])
     return result
 
 

@@ -1,8 +1,20 @@
 def intersection(arrays):
     """
-    YOUR CODE HERE
+    Return the intersection of two array without using sets or numpy, by
+    using hash tables to keep track of the counts of each number in each
+    array, and returning the list of numbers with a count equal to the 
+    number of arrays (the len of arrays param)
     """
-    # Your code here
+    # Create an array of numbers mapped to their counts in the arrays
+    counts = {}
+    for array in arrays:
+        for num in array:
+            counts[num] = counts.get(num, 0) + 1
+
+    # Return the numbers that were present in all arrays by identifying
+    # intersections. We do so by selecting numbers incremented in each array
+    # pass
+    result = [num for num in counts if counts[num] == len(arrays)]
 
     return result
 
